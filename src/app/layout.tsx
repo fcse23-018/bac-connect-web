@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { Footer } from '@/components/layout/Footer';
@@ -12,14 +12,19 @@ export const metadata: Metadata = {
   description: 'The secure student hub for Botswana School of Business Sciences. Connect, collaborate, and thrive.',
   icons: { icon: '/favicon.ico', apple: '/logo.png' },
   manifest: '/manifest.json',
-  themeColor: '#080B1A',
-  viewport: 'width=device-width, initial-scale=1, viewport-fit=cover',
   openGraph: {
     title: 'BAC Connect',
     description: 'The secure student hub for Botswana School of Business Sciences.',
     siteName: 'BAC Connect',
     type: 'website',
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#080B1A',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

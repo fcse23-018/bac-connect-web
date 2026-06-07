@@ -1,9 +1,8 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Phone, MapPin, Shield, AlertTriangle } from 'lucide-react';
-
-export const metadata: Metadata = { title: 'Emergency SOS' };
 
 const emergencyContacts = [
   { name: 'Campus Security', number: '+267 391 2345', dept: '24/7 Security' },
