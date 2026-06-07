@@ -1,1 +1,0 @@
-# BAC Connect Web\n\nNext.js 14 + Supabase web application for Botswana School of Business Sciences.

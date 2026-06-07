@@ -1,75 +1,50 @@
 'use client';
 
 import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { Phone, MapPin, Shield, AlertTriangle } from 'lucide-react';
 
 const emergencyContacts = [
   { name: 'Campus Security', number: '+267 391 2345', dept: '24/7 Security' },
   { name: 'Health Center', number: '+267 391 2346', dept: 'Medical Emergencies' },
   { name: 'Student Affairs', number: '+267 391 2347', dept: 'Student Support' },
   { name: 'IT Helpdesk', number: '+267 391 2348', dept: 'Technical Support' },
-  { name: 'National Police', number: '999', dept: 'Emergency Services' },
+  { name: 'Police', number: '999', dept: 'Emergency Services' },
   { name: 'Ambulance', number: '997', dept: 'Medical Emergency' },
 ];
 
 export default function SOSPage() {
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="text-center py-8">
-        <div className="w-20 h-20 bg-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Shield size={40} className="text-error" />
+      <div className="text-center py-6">
+        <div className="w-14 h-14 bg-error/20 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg className="w-7 h-7 text-error" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
         </div>
-        <h1 className="text-3xl font-bold text-text-primary">Emergency SOS</h1>
-        <p className="text-text-secondary mt-2">Quick access to campus and national emergency services</p>
+        <h1 className="text-xl font-bold text-text-primary">Emergency Contacts</h1>
+        <p className="text-xs text-text-secondary mt-1">Quick access to campus and national emergency services</p>
       </div>
 
-      <div className="bg-error/10 border border-error/20 rounded-2xl p-6">
-        <div className="flex items-start gap-4">
-          <AlertTriangle size={24} className="text-error flex-shrink-0 mt-0.5" />
-          <div>
-            <h2 className="font-bold text-text-primary mb-1">In case of emergency</h2>
-            <p className="text-sm text-text-secondary">
-              Call campus security immediately for on-campus incidents. 
-              For life-threatening emergencies, dial 999 (Police) or 997 (Ambulance).
-            </p>
-          </div>
-        </div>
+      <div className="bg-error/10 border border-error/20 rounded-xl p-4">
+        <p className="text-xs text-text-secondary">
+          For life-threatening emergencies, call <strong className="text-error">999</strong> (Police) or <strong className="text-error">997</strong> (Ambulance) immediately.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {emergencyContacts.map((contact) => (
-          <Card key={contact.name} hover className="relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-bl-full" />
-            <div className="relative z-10">
-              <h3 className="font-semibold text-text-primary">{contact.name}</h3>
-              <p className="text-sm text-text-muted mt-0.5">{contact.dept}</p>
-              <p className="text-xl font-bold text-accent mt-3">{contact.number}</p>
-              <Button
-                variant="primary"
-                className="w-full mt-4"
-                onClick={() => window.open(`tel:${contact.number.replace(/\s/g, '')}`, '_blank')}
-              >
-                <Phone size={16} className="mr-2" /> Call Now
-              </Button>
-            </div>
+          <Card key={contact.name} hover className="p-4">
+            <h3 className="font-semibold text-sm text-text-primary">{contact.name}</h3>
+            <p className="text-xs text-text-muted mt-0.5">{contact.dept}</p>
+            <p className="text-base font-bold text-accent mt-2">{contact.number}</p>
+            <button
+              className="btn-secondary w-full mt-3 text-xs py-2"
+              onClick={() => window.open(`tel:${contact.number.replace(/\s/g, '')}`, '_blank')}
+            >
+              Call
+            </button>
           </Card>
         ))}
       </div>
-
-      <Card>
-        <div className="flex items-start gap-4">
-          <MapPin size={20} className="text-accent flex-shrink-0 mt-1" />
-          <div>
-            <h3 className="font-semibold text-text-primary mb-1">Campus Locations</h3>
-            <p className="text-sm text-text-secondary">
-              Main Campus: Plot 123, Gaborone CBD<br />
-              Security Office: Block A, Ground Floor<br />
-              Health Center: Block C, Room 101
-            </p>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 }

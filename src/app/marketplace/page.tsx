@@ -1,70 +1,35 @@
 import type { Metadata } from 'next';
-import { Search, SlidersHorizontal, Plus } from 'lucide-react';
-import { Card, CardHeader, CardContent } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { Avatar } from '@/components/ui/Avatar';
 
 export const metadata: Metadata = { title: 'Marketplace' };
-
-const listings = [
-  { id: 1, title: 'Calculus Textbook', price: 'P150', category: 'Books', user: 'Thabo M.', time: '2h ago', image: null },
-  { id: 2, title: 'Scientific Calculator', price: 'P250', category: 'Electronics', user: 'Lerato K.', time: '5h ago', image: null },
-  { id: 3, title: 'Studio Apartment', price: 'P2,500/mo', category: 'Housing', user: 'Keitumetse B.', time: '1d ago', image: null },
-  { id: 4, title: 'Graphic Design Laptop', price: 'P4,500', category: 'Electronics', user: 'Goitse M.', time: '2d ago', image: null },
-  { id: 5, title: 'Python Notes Bundle', price: 'P80', category: 'Books', user: 'Tshepiso R.', time: '3d ago', image: null },
-  { id: 6, title: 'Bicycle - Good Condition', price: 'P800', category: 'Sports', user: 'Kagiso S.', time: '4d ago', image: null },
-];
 
 export default function MarketplacePage() {
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-text-primary">Marketplace</h1>
-          <p className="text-text-secondary mt-1">Buy, sell, and trade on campus</p>
-        </div>
-        <button className="btn-primary inline-flex items-center gap-2">
-          <Plus size={18} /> Create Listing
-        </button>
+      <div>
+        <h1 className="page-title">Marketplace</h1>
+        <p className="page-subtitle">Buy and sell on campus.</p>
       </div>
 
-      <div className="flex items-center gap-3">
-        <div className="relative flex-1 max-w-md">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" />
-          <input
-            placeholder="Search listings..."
-            className="input-field pl-10"
-          />
-        </div>
-        <button className="btn-secondary p-3">
-          <SlidersHorizontal size={18} />
-        </button>
+      <div className="relative max-w-sm">
+        <input placeholder="Search listings..." className="input pl-9" />
+        <svg className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {listings.map((item) => (
-          <Card key={item.id} hover>
-            <div className="aspect-video bg-surface-light rounded-xl mb-4 flex items-center justify-center">
-              <span className="text-text-muted text-sm">No image</span>
-            </div>
-            <CardHeader className="mb-0">
-              <div className="flex-1">
-                <h3 className="font-semibold text-text-primary">{item.title}</h3>
-                <p className="text-lg font-bold text-accent mt-1">{item.price}</p>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Badge variant="accent">{item.category}</Badge>
-            </CardContent>
-            <div className="flex items-center justify-between pt-4 border-t border-border">
-              <div className="flex items-center gap-2">
-                <Avatar size="sm" fallback={item.user.charAt(0)} />
-                <span className="text-sm text-text-secondary">{item.user}</span>
-              </div>
-              <span className="text-xs text-text-muted">{item.time}</span>
-            </div>
-          </Card>
-        ))}
+      <div className="text-center py-16">
+        <div className="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mx-auto mb-4">
+          <svg className="w-7 h-7 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+        </div>
+        <p className="text-text-secondary font-medium">No listings yet</p>
+        <p className="text-xs text-text-muted mt-1 max-w-xs mx-auto">
+          The marketplace is empty. Listings will appear here once students start posting items for sale.
+        </p>
+        <button className="btn-primary mt-6 text-sm">
+          Post a listing
+        </button>
       </div>
     </div>
   );

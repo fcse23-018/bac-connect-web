@@ -1,44 +1,26 @@
 import type { Metadata } from 'next';
-import { Card, CardHeader, CardContent } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { Store, Star, MapPin } from 'lucide-react';
+import { Card } from '@/components/ui/Card';
 
 export const metadata: Metadata = { title: 'Services' };
-
-const stores = [
-  { name: 'Campus Printing Hub', rating: 4.5, category: 'Printing', location: 'Block B', desc: 'Affordable printing, binding, and scanning services.' },
-  { name: 'Tech Fix BSBS', rating: 4.8, category: 'Tech Repair', location: 'Block D', desc: 'Phone and laptop repairs at student-friendly prices.' },
-  { name: 'Books & Beyond', rating: 4.2, category: 'Bookstore', location: 'Main Building', desc: 'New and used textbooks, stationery, and academic supplies.' },
-  { name: 'Campus Eats', rating: 4.6, category: 'Food', location: 'Cafeteria', desc: 'Affordable meals, snacks, and beverages for students.' },
-];
 
 export default function StorefrontsPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold text-text-primary">Campus Services</h1>
-        <p className="text-text-secondary mt-1">Student-run businesses and campus services</p>
+        <h1 className="page-title">Campus Services</h1>
+        <p className="page-subtitle">Student-run businesses and campus services.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {stores.map((store, i) => (
-          <Card key={i} hover>
-            <CardHeader>
-              <div className="p-3 bg-accent/20 rounded-xl"><Store size={20} className="text-accent" /></div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-text-primary">{store.name}</h3>
-                <div className="flex items-center gap-2 mt-1">
-                  <Badge variant="accent">{store.category}</Badge>
-                  <span className="flex items-center gap-1 text-sm text-warning"><Star size={14} /> {store.rating}</span>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-text-secondary mb-3">{store.desc}</p>
-              <p className="flex items-center gap-1 text-sm text-text-muted"><MapPin size={14} /> {store.location}</p>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="text-center py-16">
+        <div className="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mx-auto mb-4">
+          <svg className="w-7 h-7 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <p className="text-text-secondary font-medium">No services listed yet</p>
+        <p className="text-xs text-text-muted mt-1 max-w-xs mx-auto">
+          Campus services will appear here once registered by student businesses and service providers.
+        </p>
       </div>
     </div>
   );

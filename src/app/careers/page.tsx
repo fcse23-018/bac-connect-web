@@ -1,59 +1,26 @@
 import type { Metadata } from 'next';
-import { Card, CardHeader, CardContent } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
-import { Briefcase, MapPin, Calendar, ExternalLink } from 'lucide-react';
+import { Card } from '@/components/ui/Card';
 
 export const metadata: Metadata = { title: 'Careers' };
-
-const opportunities = [
-  { id: 1, title: 'Software Engineering Intern', company: 'TechCorp Botswana', type: 'Internship', location: 'Gaborone', deadline: '2024-08-01', description: 'Join our engineering team for a 3-month internship working on web applications.' },
-  { id: 2, title: 'Junior Data Analyst', company: 'DataSolve', type: 'Job', location: 'Remote', deadline: '2024-07-30', description: 'Analyze business data and create insightful reports for decision makers.' },
-  { id: 3, title: 'Campus Ambassador', company: 'EduTech Africa', type: 'Volunteer', location: 'On-Campus', deadline: '2024-07-20', description: 'Represent EduTech on campus and organize tech events for students.' },
-  { id: 4, title: 'Marketing Intern', company: 'BrandLab BW', type: 'Internship', location: 'Gaborone', deadline: '2024-08-15', description: 'Assist with social media management, content creation, and campaign analytics.' },
-];
 
 export default function CareersPage() {
   return (
     <div className="space-y-6 animate-fade-in">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-text-primary">Career Hub</h1>
-          <p className="text-text-secondary mt-1">Jobs, internships, and opportunities</p>
-        </div>
-        <Button variant="secondary">
-          <Briefcase size={16} className="mr-2" /> Post Opportunity
-        </Button>
+      <div>
+        <h1 className="page-title">Careers</h1>
+        <p className="page-subtitle">Jobs, internships, and opportunities.</p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {opportunities.map((opp) => (
-          <Card key={opp.id} hover>
-            <div className="flex items-start justify-between mb-3">
-              <div>
-                <h3 className="font-semibold text-text-primary">{opp.title}</h3>
-                <p className="text-sm text-accent font-medium">{opp.company}</p>
-              </div>
-              <Badge
-                variant={opp.type === 'Internship' ? 'accent' : opp.type === 'Job' ? 'success' : 'warning'}
-              >
-                {opp.type}
-              </Badge>
-            </div>
-            <p className="text-sm text-text-secondary mb-4">{opp.description}</p>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted">
-              <span className="flex items-center gap-1">
-                <MapPin size={14} /> {opp.location}
-              </span>
-              <span className="flex items-center gap-1">
-                <Calendar size={14} /> Due {opp.deadline}
-              </span>
-            </div>
-            <Button variant="secondary" className="w-full mt-4">
-              <ExternalLink size={16} className="mr-2" /> Apply Now
-            </Button>
-          </Card>
-        ))}
+      <div className="text-center py-16">
+        <div className="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mx-auto mb-4">
+          <svg className="w-7 h-7 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <p className="text-text-secondary font-medium">No opportunities yet</p>
+        <p className="text-xs text-text-muted mt-1 max-w-xs mx-auto">
+          Career opportunities will be posted here by the careers office and partner organizations.
+        </p>
       </div>
     </div>
   );

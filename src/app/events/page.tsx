@@ -1,40 +1,26 @@
 import type { Metadata } from 'next';
-import { Card, CardHeader, CardContent } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
-import { Calendar, MapPin, Clock } from 'lucide-react';
+import { Card } from '@/components/ui/Card';
 
 export const metadata: Metadata = { title: 'Events' };
-
-const events = [
-  { title: 'Tech Career Fair 2024', date: '2024-08-15', time: '10:00 - 16:00', location: 'Main Hall', type: 'Career', desc: 'Meet top employers from tech companies across Botswana.' },
-  { title: 'Study Skills Workshop', date: '2024-07-22', time: '14:00 - 15:30', location: 'Room 301', type: 'Academic', desc: 'Learn effective study techniques and time management.' },
-  { title: 'Campus Sports Day', date: '2024-08-05', time: '08:00 - 17:00', location: 'Sports Ground', type: 'Sports', desc: 'Annual inter-departmental sports competition.' },
-  { title: 'Alumni Networking Night', date: '2024-08-20', time: '18:00 - 21:00', location: 'Campus Garden', type: 'Networking', desc: 'Connect with successful BSBS alumni.' },
-];
 
 export default function EventsPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold text-text-primary">Events</h1>
-        <p className="text-text-secondary mt-1">Campus events and activities</p>
+        <h1 className="page-title">Events</h1>
+        <p className="page-subtitle">Campus events and activities.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {events.map((event, i) => (
-          <Card key={i} hover>
-            <div className="flex items-start justify-between mb-3">
-              <h3 className="font-semibold text-text-primary">{event.title}</h3>
-              <Badge variant="accent">{event.type}</Badge>
-            </div>
-            <p className="text-sm text-text-secondary mb-4">{event.desc}</p>
-            <div className="flex flex-wrap gap-4 text-sm text-text-muted">
-              <span className="flex items-center gap-1"><Calendar size={14} /> {event.date}</span>
-              <span className="flex items-center gap-1"><Clock size={14} /> {event.time}</span>
-              <span className="flex items-center gap-1"><MapPin size={14} /> {event.location}</span>
-            </div>
-          </Card>
-        ))}
+      <div className="text-center py-16">
+        <div className="w-16 h-16 rounded-full bg-surface border border-border flex items-center justify-center mx-auto mb-4">
+          <svg className="w-7 h-7 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <p className="text-text-secondary font-medium">No upcoming events</p>
+        <p className="text-xs text-text-muted mt-1 max-w-xs mx-auto">
+          Campus events will be listed here. Check back later or contact student affairs.
+        </p>
       </div>
     </div>
   );

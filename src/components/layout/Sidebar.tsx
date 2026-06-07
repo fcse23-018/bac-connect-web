@@ -2,63 +2,57 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils/cn';
-import {
-  LayoutDashboard,
-  ShoppingBag,
-  MessageSquare,
-  Users,
-  GraduationCap,
-  Briefcase,
-  Heart,
-  ShieldAlert,
-  BookOpen,
-  Wallet,
-  MapPin,
-  Store,
-  Image,
-  UserCircle,
-} from 'lucide-react';
 
-const sidebarLinks = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/marketplace', label: 'Marketplace', icon: ShoppingBag },
-  { href: '/chat', label: 'Messages', icon: MessageSquare },
-  { href: '/groups', label: 'Groups', icon: Users },
-  { href: '/academic', label: 'Academic', icon: GraduationCap },
-  { href: '/careers', label: 'Careers', icon: Briefcase },
-  { href: '/wellness', label: 'Wellness', icon: Heart },
-  { href: '/sos', label: 'SOS Emergency', icon: ShieldAlert },
-  { href: '/alumni', label: 'Alumni', icon: BookOpen },
-  { href: '/lost-and-found', label: 'Lost & Found', icon: MapPin },
-  { href: '/profile', label: 'Profile', icon: UserCircle },
+const navItems = [
+  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/marketplace', label: 'Marketplace' },
+  { href: '/chat', label: 'Messages' },
+  { href: '/groups', label: 'Groups' },
+  { href: '/academic', label: 'Academic' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/wellness', label: 'Wellness' },
+  { href: '/sos', label: 'SOS' },
+  { href: '/alumni', label: 'Alumni' },
+  { href: '/lost-and-found', label: 'Lost & Found' },
+  { href: '/profile', label: 'Profile' },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
 
+  const isActive = (href: string) =>
+    pathname === href || (href !== '/dashboard' && pathname.startsWith(href + '/'));
+
+  const showSidebar = navItems.some((item) => isActive(item.href)) || isActive('/dashboard');
+
+  if (!showSidebar && pathname !== '/') return null;
+
   return (
-    <aside className="fixed left-0 top-16 bottom-0 w-64 bg-background border-r border-border hidden lg:block overflow-y-auto">
-      <div className="p-4 space-y-1">
-        {sidebarLinks.map((link) => {
-          const Icon = link.icon;
-          const active = pathname === link.href || pathname.startsWith(link.href + '/');
+    <aside className="fixed left-0 top-14 bottom-0 w-64 bg-background border-r border-border hidden lg:block overflow-y-auto z-40">
+      <div className="p-3 space-y-0.5">
+        {navItems.map((item) => {
+          const active = isActive(item.href);
           return (
             <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
+              key={item.href}
+              href={item.href}
+              className={`relative flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                 active
-                  ? 'bg-accent/20 text-accent'
-                  : 'text-text-secondary hover:text-text-primary hover:bg-surface-light'
-              )}
+                  ? 'text-text-primary bg-surface-light/30'
+                  : 'text-text-secondary hover:text-text-primary hover:bg-surface-light/30'
+              }`}
             >
-              <Icon size={18} />
-              {link.label}
+              <span className={`nav-indicator ${active ? 'opacity-100' : 'opacity-0'}`} />
+              {item.label}
             </Link>
           );
         })}
+      </div>
+      <div className="p-4 border-t border-border mt-2">
+        <p className="text-xs text-text-muted leading-relaxed">
+          BAC Connect v1.0<br />
+          Botswana Accountancy College
+        </p>
       </div>
     </aside>
   );

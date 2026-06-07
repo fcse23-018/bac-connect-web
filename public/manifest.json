@@ -1,13 +1,13 @@
 {
   "name": "BAC Connect",
   "short_name": "BAC Connect",
-  "description": "The secure student hub for Botswana School of Business Sciences",
+  "description": "Student portal for Botswana Accountancy College",
   "start_url": "/dashboard",
   "display": "standalone",
   "background_color": "#080B1A",
   "theme_color": "#080B1A",
   "icons": [
-    { "src": "/logo.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/logo.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/images/logo.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/logo.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
